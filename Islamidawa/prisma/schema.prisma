@@ -1,0 +1,51 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+model newUser {
+  id       Int    @id @default(autoincrement())
+  fullName String
+  role     String
+  division String
+  district String
+  upazila    String
+  tunion    String
+  markaz   String
+  phoneNumber String
+  email    String @unique
+  password String
+
+  @@index([fullName])
+  @@index([division])
+  @@index([district])
+  @@index([upazila])
+  @@index([tunion])
+  
+}
+
+
+model amoliMuhasabaData {
+  id           Int      @id @default(autoincrement())
+  tahajjud String
+  ayat String
+  zikir String
+  ishraq String
+  jamat String
+  sirat String
+  Dua String
+  ilm String
+  tasbih String
+  dayeeAmol String
+  amoliSura String
+  ayamroja String
+  hijbulBahar String
+}
